@@ -1,2 +1,4 @@
-# food-tracker
-Webapp to track calories and other nutritional information
+# MealMate
+Your Personal Food and Nutrition Tracker
+
+(MealMate)[https://mealmate.io]
