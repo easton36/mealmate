@@ -23,8 +23,8 @@ app.use(helmet({
 }));
 
 const server = https.createServer({
-	cert: fs.readFileSync(path.resolve(CONFIG.HTTPS.CERT)),
-	key: fs.readFileSync(path.resolve(CONFIG.HTTPS.KEY))
+	cert: fs.readFileSync(path.resolve(CONFIG.SSL.CERT)),
+	key: fs.readFileSync(path.resolve(CONFIG.SSL.KEY))
 }, app);
 
 server.listen(CONFIG.SERVER.PORT, () => {
