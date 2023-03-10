@@ -4,6 +4,7 @@ const { v4: uuid } = require('uuid');
 const { hashPassword, validatePassword } = require('../helpers/passwords.helper');
 const { generateJwt } = require('../helpers/jwt.helper');
 const { User } = require('../../../../db/Models');
+const { SERVER } = require('../../../../config');
 
 const login = async (req, res, next) => {
     try{
@@ -23,7 +24,7 @@ const login = async (req, res, next) => {
         res.cookie('token', token, {
 			httpOnly: false,
 			signed: false,
-			domain: 'mealmate.io',
+			domain: SERVER.DOMAIN,
 			secure: true
 		});
         res.setHeader('Authorization', 'Bearer ' + token);
@@ -85,7 +86,7 @@ const register = async (req, res, next) => {
         res.cookie('token', token, {
 			httpOnly: false,
 			signed: false,
-			domain: 'mealmate.io',
+			domain: SERVER.DOMAIN,
 			secure: true
 		});
         res.setHeader('Authorization', 'Bearer ' + token);

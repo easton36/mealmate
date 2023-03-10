@@ -4,6 +4,7 @@ module.exports = {
 		KEY: 'ssl/key.pem'
 	},
 	SERVER: {
-		PORT: 443
+		PORT: 443,
+		DOMAIN: 'mealmate.io'
 	}
 }
