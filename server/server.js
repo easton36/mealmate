@@ -47,3 +47,19 @@ app.use(express.static(path.resolve(__dirname, '../app/dist')));
 app.use('/api', ApiRoutes);
 
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../app/dist/index.html')));
+
+// listen for unexpected errors
+const EXIT_EVENTS = ['beforeExit', 'SIGINT', 'uncaughtException', 'unhandledRejection'];
+EXIT_EVENTS.forEach((event) => {
+	process.on(event, (exitCode) => {
+		console.log(`[PROCESS] Exiting with code: ${exitCode}`);
+
+		// print stack trace not just exit code
+		if(event === 'uncaughtException' || event === 'unhandledRejection'){
+			console.log('[PROCESS] Stack trace:');
+			console.log(exitCode);
+		}
+		
+		return process.exit(1);
+	});
+});
