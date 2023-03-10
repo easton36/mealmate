@@ -10,6 +10,7 @@ require('dotenv').config();
 const CONFIG = require('./config.js');
 
 const ApiRoutes = require('./api/routes/routes');
+const ErrorHandler = require('./api/middlewear/error-handler.middlewear');
 
 const app = express();
 // disable x-powered-by header
@@ -45,6 +46,8 @@ app.use(express.static(path.resolve(__dirname, '../app/dist')));
 
 // api routes
 app.use('/api', ApiRoutes);
+
+app.use(ErrorHandler);
 
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../app/dist/index.html')));
 
