@@ -4,6 +4,6 @@ module.exports = {
 		KEY: 'ssl/key.pem'
 	},
 	SERVER: {
-		PORT: 80
+		PORT: 443
 	}
 }
