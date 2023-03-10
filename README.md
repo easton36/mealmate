@@ -1,4 +1,4 @@
 # MealMate
 Your Personal Food and Nutrition Tracker
 
-(MealMate)[https://mealmate.io]
+[MealMate.io](https://mealmate.io)
