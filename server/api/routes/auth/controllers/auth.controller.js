@@ -105,7 +105,26 @@ const register = async (req, res, next) => {
     }
 };
 
+const logout = async (req, res, next) => {
+	try{
+		res.clearCookie('token', {
+			httpOnly: false,
+			signed: false,
+			domain: SERVER.DOMAIN,
+			secure: true
+		});
+		res.setHeader('Authorization', '');
+
+		return res.status(200).json({
+			success: true
+		});
+	} catch(err){
+		return next(err);
+	}
+};
+
 module.exports = {
     login,
-    register
+    register,
+	logout
 };

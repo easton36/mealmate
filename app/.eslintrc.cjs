@@ -72,7 +72,8 @@ module.exports = {
 		camelcase: 0,
 		'space-before-blocks': 0,
 		'space-before-function-paren': 0,
-		'react/prop-types': [0]
+		'react/prop-types': [0],
+		'react/no-unescaped-entities': 0
 	},
 	settings: {
 		react: {

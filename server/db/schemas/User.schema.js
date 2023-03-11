@@ -14,6 +14,9 @@ module.exports = mongoose.model('users', new mongoose.Schema({
         type: String,
         required: true
     },
+	name: {
+		type: String
+	},
     
     firstIp: { // ip address used when the user signed up
         type: String,
@@ -61,7 +64,7 @@ module.exports = mongoose.model('users', new mongoose.Schema({
 			type: Date
 		}
 	},
-	bodyFat: {
+	bodyFat: { // body fat percentage 0.50 = 50%
 		value: {
 			type: Number
 		},
@@ -69,10 +72,10 @@ module.exports = mongoose.model('users', new mongoose.Schema({
 			type: Date
 		}
 	},
-	calorieGoal: {
+	calorieGoal: { // daily calorie goal
 		type: Number
 	},
-	basicMetabolicRate: {
+	basicMetabolicRate: { // BMR
 		formula: {
 			type: String,
 			enum: ['Harris-Benedict', 'Mifflin-St. Jeor', 'Katch-McArdle'],

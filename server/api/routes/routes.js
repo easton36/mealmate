@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const passport = require('../middlewear/passport.middlewear');
+
 const AuthRoutes = require('./auth/auth.routes');
+
+router.use(passport.initialize());
 
 router.get('/', (req, res) => {
 	return res.status(200).json({

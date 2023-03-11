@@ -38,7 +38,7 @@ export function SignUp() {
 					<CardFooter className="pt-0">
 						<Button variant="gradient" fullWidth>Sign Up</Button>
 						<Typography variant="small" className="mt-6 flex justify-center">Already have an account?
-							<Link to="/auth/sign-in">
+							<Link to="/sign-in">
 								<Typography
 									as="span"
 									variant="small"

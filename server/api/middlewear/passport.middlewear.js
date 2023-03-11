@@ -29,3 +29,5 @@ passport.use(new JWTSrategy({
         return done(err);
     }
 }));
+
+module.exports = passport;

@@ -2,7 +2,7 @@ const DATE = new Date().toJSON().split('T')[0];
 
 module.exports = {
 	apps: [{
-		name: 'Main Server',
+		name: 'MealMate Server',
 		script: 'server.js',
 		watch: false,
 

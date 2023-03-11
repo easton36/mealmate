@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { IconButton } from '@material-tailwind/react';
 import {
@@ -39,8 +39,9 @@ export function Dashboard() {
 						layout === 'dashboard' && pages.map(({ path, element }, index) => (
 							<Route exact path={path} element={element} key={index} />
 						))
-					)
-					)}
+					))}
+
+					<Route path="*" element={<Navigate to={'/dashboard/home'} replace />} />
 				</Routes>
 			</div>
 		</div>
