@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { SignIn, SignUp } from '@/pages/auth';
 
 function App() {
-	const isAuthenticated = !useSelector((state) => state.auth.isAuthenticated);
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
 	const AUTH_ROUTES = [{
 		name: 'sign in',
