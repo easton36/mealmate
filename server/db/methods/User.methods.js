@@ -1,4 +1,4 @@
-const User = require('./schemas/User.schema');
+const User = require('../schemas/User.schema');
 
 const findByUsername = async (username) => {
     const user = await User.findOne({ username });

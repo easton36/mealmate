@@ -1,7 +1,7 @@
 const CONFIG = require('../../config');
 
 module.exports = (err, req, res, next) => {
-	const ip = (req.headers['CF-Connecting-IP'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress).replace('::ffff:', '');
+	const ip = (req.headers['CF-Connecting-IP'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress)?.replace('::ffff:', '');
 	console.log(`[API ERROR] [${req.originalUrl}] [USER - ${req?.user?.id || req?.user?.key || ip}] ${err?.message || err}`);
 	if(!CONFIG.PRODUCTION){
 		console.log(err);

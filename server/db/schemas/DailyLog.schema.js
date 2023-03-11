@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model('dailyLogs', new mongoose.Schema({
     _id: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     userId: { // what user this log belongs to
         type: String,
@@ -19,6 +18,5 @@ module.exports = mongoose.model('dailyLogs', new mongoose.Schema({
         required: true
     }
 }, {
-    timestamps: true,
-    versionKey: true
+    timestamps: true
 }));

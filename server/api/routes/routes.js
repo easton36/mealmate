@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (res) => {
+const AuthRoutes = require('./auth/auth.routes');
+
+router.get('/', (req, res) => {
 	return res.status(200).json({
-		name: 'SkinSwap API',
+		name: 'MealMate API',
 		author: {
-			discord: 'sampli#0001'
+			name: 'Easton Schram',
+			github: 'https://github.com/easton36'
 		}
 	});
 });
+
+router.use('/auth', AuthRoutes);
 
 module.exports = router;

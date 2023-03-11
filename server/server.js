@@ -1,13 +1,29 @@
 const https = require('https');
+const http = require('http');
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
 const helmet = require('helmet');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 const CONFIG = require('./config.js');
+
+// initialize mongoose mongodb
+mongoose.set('strictQuery', false);
+mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`, {
+	maxPoolSize: 100,
+	minPoolSize: 25
+})
+	.then(() => {
+		console.log(`[MONGODB] Connected to ${process.env.DB_NAME} database`);
+	})
+	.catch((err) => {
+		console.log(`[MONGODB] Error connecting to database: ${err}`);
+		process.exit(1);
+	});
 
 const ApiRoutes = require('./api/routes/routes');
 const ErrorHandler = require('./api/middlewear/error-handler.middlewear');
@@ -23,10 +39,10 @@ app.use(helmet({
 	crossOriginOpenerPolicy: false
 }));
 
-const server = https.createServer({
+const server = CONFIG.PRODUCTION ? https.createServer({
 	cert: fs.readFileSync(path.resolve(CONFIG.SSL.CERT)),
 	key: fs.readFileSync(path.resolve(CONFIG.SSL.KEY))
-}, app);
+}, app) : http.createServer(app);
 
 server.listen(CONFIG.SERVER.PORT, () => {
 	console.log('[HTTP] Web server is online on port ' + CONFIG.SERVER.PORT);
@@ -59,8 +75,7 @@ EXIT_EVENTS.forEach((event) => {
 
 		// print stack trace not just exit code
 		if(event === 'uncaughtException' || event === 'unhandledRejection'){
-			console.log('[PROCESS] Stack trace:');
-			console.log(exitCode);
+			console.log('[PROCESS] Stack trace:', exitCode);
 		}
 		
 		return process.exit(1);
